@@ -1,0 +1,13 @@
+/*! \mainpage DGGS (Python API)
+ *
+ * The Python API for the DGGS is provided as a set of source files that wrap the native library to
+ * provide access to the DGGS functionality. Alternatively a Python wheel file is provided to allow
+ * the DGGS package to be installed via pip (the Python package manager).
+ *
+ * The Python API provides:
+ * - A Dggs class that provides the methods to access the DGGS functionality.
+ * - Data structures that represent the points, linestrings and polygons in the latitude/longitude and DGGS domains.
+ * - Pre-defined constants used for the API's inputs and outputs.
+ * - Exception class that is thrown when an error occurs in the underlying DLL.
+ * - Compatibility with both Python 2 and Python 3.
+ */

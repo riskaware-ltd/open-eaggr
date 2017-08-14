@@ -1,0 +1,5 @@
+grant { 
+  // needed to write jars to temporary directory
+  permission java.io.FilePermission "<<ALL_FILES>>", "read, write";
+  permission java.lang.RuntimePermission "loadLibrary.*";
+}; 

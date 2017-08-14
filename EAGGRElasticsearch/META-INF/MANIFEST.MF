@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+X-Compile-Elasticsearch-Version: 2.4.0
+Implementation-Title: DGGS plugin
+Implementation-Version: 2.4.0
+Archiver-Version: Plexus Archiver
+Built-By: i_bush
+Implementation-Vendor-Id: uk.co.riskaware
+X-Build-Time: 1469114116053
+X-Build-Branch: UNKNOWN_BRANCH
+X-Compile-Target-JDK: 1.8
+X-Build-Number: 
+X-Compile-Lucene-Version: 5.5.0
+X-Compile-Source-JDK: 1.8
+Created-By: i_bush
+Build-Jdk: 1.8.0_45

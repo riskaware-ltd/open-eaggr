@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.887468223">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.887468223" moduleId="org.eclipse.cdt.core.settings" name="Debug64">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/DGGSTestHarness"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="DGGSTestHarness" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" description="" id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.887468223" name="Debug64" parent="org.eclipse.cdt.build.core.emptycfg" postbuildStep="">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.887468223." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.15248165" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.440623218" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+							<builder buildPath="${workspace_loc:/DGGSTestHarness}/Debug64" cleanBuildTarget="clean RM=&quot;rm -f&quot;" id="cdt.managedbuild.target.gnu.builder.base.2144269211" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1934552125" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.254637190" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
+								<option id="gnu.cpp.compiler.option.include.paths.168495028" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value=".."/>
+									<listOptionValue builtIn="false" value="../../EAGGRTestHarness"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/proj4"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr/ogrsf_frmts/geojson/libjson"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr/ogrsf_frmts"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr/ogrsf_frmts/geojson"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/gcore"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/port"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal"/>
+									<listOptionValue builtIn="false" value="../../EAGGRTestHarness/3rdParty"/>
+									<listOptionValue builtIn="false" value="../../EAGGR"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.optimization.level.1954299395" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.dialect.std.1138180996" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.other.other.1442645677" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.983315718" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.639049890" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+								<option id="gnu.c.compiler.option.optimization.level.681712496" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" value="gnu.c.optimization.level.none" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.920250502" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.2031623754" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.627916668" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
+								<option id="gnu.cpp.link.option.libs.323481460" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="gdal"/>
+									<listOptionValue builtIn="false" value="eaggr_d"/>
+									<listOptionValue builtIn="false" value="proj"/>
+								</option>
+								<option id="gnu.cpp.link.option.paths.588193539" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="../../EAGGRLinux/3rdParty/bin/linux-x86-64"/>
+									<listOptionValue builtIn="false" value="../../EAGGRLinux/Debug64"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.2070342865" name="Linker flags" superClass="gnu.cpp.link.option.flags" value=" -pthread" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1955263501" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.157532021" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.417290645" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186" moduleId="org.eclipse.cdt.core.settings" name="Release64">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/DGGSTestHarness"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/DGGSTestHarness/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="DGGSTestHarness" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" description="" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.CWDLocator;org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186" name="Release64" parent="org.eclipse.cdt.build.core.emptycfg" postannouncebuildStep="" postbuildStep="" preannouncebuildStep="" prebuildStep="">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.729223149" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.2093747499" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+							<builder buildPath="${workspace_loc:/DGGSTestHarness}/Release64" cleanBuildTarget="clean RM=&quot;rm -f&quot;" id="cdt.managedbuild.target.gnu.builder.base.366717420" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.691753911" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1090285488" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
+								<option id="gnu.cpp.compiler.option.include.paths.1459797601" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value=".."/>
+									<listOptionValue builtIn="false" value="../../EAGGRTestHarness"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/proj4"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr/ogrsf_frmts/geojson/libjson"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr/ogrsf_frmts"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr/ogrsf_frmts/geojson"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/gcore"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/port"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal/ogr"/>
+									<listOptionValue builtIn="false" value="../../EAGGR/3rdParty/include/gdal"/>
+									<listOptionValue builtIn="false" value="../../EAGGRTestHarness/3rdParty"/>
+									<listOptionValue builtIn="false" value="../../EAGGR"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.optimization.level.1691611411" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.817453645" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.dialect.std.1260713834" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.other.other.28818991" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -std=c++0x" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.preprocessor.def.342048797" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__GXX_EXPERIMENTAL_CXX0X__"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1231065525" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1384715083" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+								<option id="gnu.c.compiler.option.optimization.level.1300138934" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" value="gnu.c.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.640816224" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.648848618" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1745373920" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1135165101" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
+								<option id="gnu.cpp.link.option.libs.536947739" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="gdal"/>
+									<listOptionValue builtIn="false" value="eaggr"/>
+									<listOptionValue builtIn="false" value="proj"/>
+								</option>
+								<option id="gnu.cpp.link.option.paths.817447514" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="../../EAGGRLinux/3rdParty/bin/linux-x86-64"/>
+									<listOptionValue builtIn="false" value="../../EAGGRLinux/Release64"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.1443979500" name="Linker flags" superClass="gnu.cpp.link.option.flags" value=" -pthread" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.234662010" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.1339464286" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1901380047" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Src"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="DGGSTestHarness.null.1522337105" name="DGGSTestHarness"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug64">
+			<resource resourceType="PROJECT" workspacePath="/DGGSTestHarness"/>
+		</configuration>
+		<configuration configurationName="Multiple configurations">
+			<resource resourceType="PROJECT" workspacePath="/DGGSTestHarnessLinux"/>
+		</configuration>
+		<configuration configurationName="Release64"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421;cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1285395721;cdt.managedbuild.tool.gnu.c.compiler.input.2006224581">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186;cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1090285488;cdt.managedbuild.tool.gnu.cpp.compiler.input.1231065525">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421;cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.577052824;cdt.managedbuild.tool.gnu.cpp.compiler.input.1632810452">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.909528270;cdt.managedbuild.toolchain.gnu.mingw.base.909528270.912788235;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1058519064;cdt.managedbuild.tool.gnu.cpp.compiler.input.1533254803">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.909528270;cdt.managedbuild.toolchain.gnu.mingw.base.909528270.912788235;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1123403425;cdt.managedbuild.tool.gnu.c.compiler.input.238492977">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186;cdt.managedbuild.toolchain.gnu.mingw.base.909528270.1116223421.1090039186.;cdt.managedbuild.tool.gnu.c.compiler.base.1384715083;cdt.managedbuild.tool.gnu.c.compiler.input.648848618">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<project name="EAGGRElasticsearch" default="all">
+
+	<property name="version" value="2.0"/>
+	
+	<property name="bin.dir" value="bin"/>
+	<property name="bin.uk.dir" value="bin/uk"/>
+	<property name="jar.dir" value="jar"/>
+	<property name="deploy.dir" value="deploy"/>
+	<property name="docs.dir" value="javadoc"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="src.dir" value="src"/>
+	<property name="test.dir" value="tests"/>
+	<property name="test.results.dir" value="testresults"/>
+	<property name="eaggr.dlls.dir" value="dlls"/>
+	<property name="test.elasticsearch.dir" value="testData/elasticsearch"/>
+		
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+    
+    <path id="test.classpath">
+        <path refid="classpath" />
+        <pathelement path="${bin.dir}" />
+        <pathelement path="${lib.dir}" />
+    </path>
+	
+	<target name="all" description="Perform full clean, compile and run tests" depends="clean,compile,test,jar">
+	</target>
+	
+	<target name="clean" description="Delete generated folders and re-create">
+		<delete dir="${bin.uk.dir}" />
+		<delete dir="${test.results.dir}" />
+	</target>
+	
+	<target name="compile" description="Compile the source">
+		<echo message="Compile source" />
+		
+		<mkdir dir="${bin.dir}" />
+		
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="classpath" debug="on" includeantruntime="false" target="1.8">
+			<compilerarg value="-Xlint" />
+		</javac>
+
+		<echo message="Compile unit tests" />
+		
+		<javac srcdir="${test.dir}" destdir="${bin.dir}" classpathref="classpath" debug="on" includeantruntime="false">
+			<compilerarg value="-Xlint" />
+		</javac>
+	</target>
+	
+	<target name="test" depends="jar" description="Execute all the tests and generate reports">
+		<echo message="Run Unit Tests" />
+		
+		<mkdir dir="${test.results.dir}" />
+
+		<junit printsummary="yes" haltonfailure="no" maxmemory="1024m" failureproperty="testfailureflag">
+
+			<classpath>
+                <path refid="test.classpath" />
+			</classpath>
+
+			<formatter type="xml" />
+
+			<batchtest fork="yes" todir="${test.results.dir}">
+				<fileset dir="${test.dir}" includes="**/*.java">
+					<filename regex=".*Test\.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
+	<target name="deploy" depends="jar" description="Creates a zip file that can be installed to Elasticsearch">
+	   <mkdir dir="${deploy.dir}" />
+	   
+	   <zip destfile="${deploy.dir}/eaggr_es.zip">
+          <fileset dir="${jar.dir}">
+	          <include name="**/*.jar" />
+          </fileset>
+          <fileset dir=".">
+              <include name="plugin-descriptor.properties" />
+              <include name="plugin-security.policy" />
+          </fileset>
+	   </zip>
+	</target>
+	
+	<target name="jar" description="Build the jar" depends="compile">
+		
+		<property name="version" value="${version}" />
+		
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/eaggr_es-${version}.jar" basedir="${bin.dir}" includes="uk/co/riskaware/eaggr/** ../META-INF/**" excludes="uk/co/riskaware/eaggr/**Test.*" >
+			<fileset dir="${bin.dir}/../../EAGGRJava/dlls">
+			</fileset>
+		</jar>
+		
+		<copy todir="${jar.dir}">
+			<fileset dir="${lib.dir}">
+                <include name="eaggr.jar" />
+			</fileset>
+		</copy>
+		
+                <!-- Delete existing eaggr_es jars (any version) --> 
+		<delete dir="${test.elasticsearch.dir}/plugins/eaggr_es">
+			<fileset dir=".">
+                             <include name="eaggr_es*.jar" />
+                        </fileset>
+		</delete>
+		
+		<copy todir="${test.elasticsearch.dir}/plugins/eaggr_es">
+			<fileset dir="${jar.dir}">
+				<include name="eaggr.jar" />
+				<include name="eaggr_es-${version}.jar" />
+			</fileset>
+			<fileset dir=".">
+				<include name="plugin-descriptor.properties" />
+				<include name="plugin-security.policy" />
+			</fileset>
+		</copy>
+	</target>
+	
+</project>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <Style id="s_ylw-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="s_red-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>0225-23144,0</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>0.0000000,51.0000009,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>0224-15429,0</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>0.0000985,51.0000399,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>0224-15429,-1</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>-0.0000985,51.0000399,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>0224-15430,0</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>0.0000000,50.9999227,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Polygon1</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          0.0000656,51.0000009,0 0.0000328,51.0000399,0 -0.0000328,51.0000399,0 -0.0000657,51.0000009,0 -0.0000328,50.9999618,0 0.0000328,50.9999618,0 0.0000656,51.0000009,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon2</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          0.0001969,51.0000790,0 0.0000985,51.0001181,0 0.0000000,51.0000790,0 0.0000000,51.0000009,0 0.0000985,50.9999618,0 0.0001969,51.0000009,0 0.0001969,51.0000790,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon3</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          0.0000000,51.0000790,0 -0.0000985,51.0001181,0 -0.0001970,51.0000790,0 -0.0001969,51.0000009,0 -0.0000985,50.9999618,0 0.0000000,51.0000009,0 0.0000000,51.0000790,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon4</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          0.0000985,50.9999618,0 0.0000000,51.0000009,0 -0.0000985,50.9999618,0 -0.0000985,50.9998837,0 0.0000000,50.9998446,0 0.0000985,50.9998837,0 0.0000985,50.9999618,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

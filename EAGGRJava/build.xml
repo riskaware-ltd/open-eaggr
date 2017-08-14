@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<project name="EAGGRJava" default="all">
+
+	<property name="version" value="2.0"/>
+	
+	<property name="bin.dir" value="bin"/>
+	<property name="bin.uk.dir" value="bin/uk"/>
+	<property name="jar.dir" value="jar"/>
+	<property name="docs.dir" value="javadoc"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="src.dir" value="src"/>
+	<property name="test.dir" value="tests"/>
+	<property name="test.results.dir" value="testresults"/>
+	<property name="eaggr.dlls.dir" value="dlls"/>
+		
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="test_classpath">
+		<path refid="classpath" />
+		<pathelement path="${bin.dir}" />
+		<pathelement path="${eaggr.dlls.dir}" />
+	</path>
+	
+	<target name="all" description="Perform full clean, compile and run tests" depends="clean,compile,test,jar,docs">
+	</target>
+	
+	<target name="clean" description="Delete generated folders and re-create">
+		<delete dir="${bin.uk.dir}" />
+		<delete dir="${test.results.dir}" />
+	</target>
+	
+	<target name="compile" description="Compile the source">
+		<echo message="Compile source" />
+		
+		<mkdir dir="${bin.dir}" />
+		
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="classpath" debug="on" includeantruntime="false" target="1.7">
+			<compilerarg value="-Xlint" />
+		</javac>
+
+		<echo message="Compile unit tests" />
+		
+		<javac srcdir="${test.dir}" destdir="${bin.dir}" classpathref="classpath" debug="on" includeantruntime="false">
+			<compilerarg value="-Xlint" />
+		</javac>
+	</target>
+	
+	<target name="test" depends="compile" description="Execute all the tests and generate reports">
+		<echo message="Run Unit Tests" />
+		
+		<mkdir dir="${test.results.dir}" />
+
+		<junit printsummary="yes" haltonfailure="no" maxmemory="1024m" failureproperty="testfailureflag">
+
+			<classpath>
+				<path refid="test_classpath" />
+			</classpath>
+
+			<formatter type="xml" />
+
+			<batchtest fork="yes" todir="${test.results.dir}">
+				<fileset dir="${test.dir}" includes="**/*.java">
+					<filename regex=".*Test\.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
+	<target name="docs" depends="compile" description="Generate javadoc">
+		<javadoc destdir="${docs.dir}" linksource="true" classpathref="test_classpath" useexternalfile="true">
+			<sourcepath path="${src.dir}" />
+		</javadoc>
+	</target>
+	
+	<target name="jar" description="Build the runnable jar" depends="compile">
+		
+		<property name="version" value="${version}" />
+		
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/eaggr.jar" basedir="${bin.dir}" includes="uk/co/riskaware/eaggr/**" excludes="uk/co/riskaware/eaggr/**Test.*" >
+			<manifest>
+				<attribute name="Class-Path" value="jna-4.1.0.jar" />
+				<attribute name="Implementation-Version" value="${version}" />
+			</manifest>
+		</jar>
+		
+		<copy todir="${jar.dir}">
+			<fileset dir="${lib.dir}">
+				<include name="jna-4.1.0.jar"/>
+			</fileset>
+		</copy>
+        
+		<!-- Copy to the elasticsearch project -->
+        <copy todir="${jar.dir}/../../EAGGRElasticsearch/lib">
+            <fileset dir="${jar.dir}">
+                <include name="eaggr.jar"/>
+            </fileset>
+        </copy>
+	</target>
+	
+</project>

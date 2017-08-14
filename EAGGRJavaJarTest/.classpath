@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="lib" path="lib/junit-4.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Work/GitHub/DGGS/dggs/EAGGRJava/jar/eaggr.jar"/>
+	<classpathentry kind="lib" path="C:/Work/GitHub/DGGS/dggs/EAGGRJava/jar/jna-4.1.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

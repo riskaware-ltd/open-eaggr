@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <Style id="s_ylw-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="s_red-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>020001233332301130110</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>-0.1275628,51.5072323,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>191100031000011211302</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>151.2094284,-33.8649536,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>131230031212332112000</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>103.7999860,1.3000112,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>112313231130221320203</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>-43.1729146,-22.9067943,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Polygon1</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -0.1275630,51.5073115,0 -0.1276636,51.5071930,0 -0.1274617,51.5071924,0 -0.1275630,51.5073115,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon2</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          151.2093730,-33.8648979,0 151.2094046,-33.8650384,0 151.2095077,-33.8649244,0 151.2093730,-33.8648979,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon3</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          103.7999861,1.2999389,0 103.7999162,1.3000546,0 103.8000556,1.3000401,0 103.7999861,1.2999389,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon4</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -43.1729188,-22.9068754,0 -43.1729795,-22.9067486,0 -43.1728455,-22.9067590,0 -43.1729188,-22.9068754,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

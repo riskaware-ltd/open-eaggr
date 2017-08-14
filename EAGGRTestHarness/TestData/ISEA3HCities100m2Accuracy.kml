@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <Style id="s_ylw-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="s_red-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>0225-16655,-1281</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>-0.1275383,51.5072056,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>1925398379,8274</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>151.2094393,-33.8650041,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>1325165633,-60405</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>103.7999880,1.3000207,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>1125-156063,-107287</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>-43.1729136,-22.9068315,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Polygon1</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -0.1274719,51.5072054,0 -0.1275052,51.5072446,0 -0.1275716,51.5072447,0 -0.1276047,51.5072058,0 -0.1275714,51.5071666,0 -0.1275050,51.5071664,0 -0.1274719,51.5072054,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon2</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          151.2094731,-33.8649666,0 151.2094288,-33.8649579,0 151.2093950,-33.8649954,0 151.2094054,-33.8650416,0 151.2094497,-33.8650503,0 151.2094836,-33.8650128,0 151.2094731,-33.8649666,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon3</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          103.8000339,1.3000159,0 103.8000109,1.3000539,0 103.7999650,1.3000587,0 103.7999421,1.3000255,0 103.7999651,1.2999874,0 103.8000110,1.2999826,0 103.8000339,1.3000159,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon4</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -43.1728695,-22.9068350,0 -43.1728895,-22.9067933,0 -43.1729336,-22.9067898,0 -43.1729577,-22.9068281,0 -43.1729377,-22.9068698,0 -43.1728936,-22.9068732,0 -43.1728695,-22.9068350,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

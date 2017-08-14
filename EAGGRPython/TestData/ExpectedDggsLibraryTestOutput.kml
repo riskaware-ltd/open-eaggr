@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <Style id="s_ylw-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Style id="s_red-pushpin">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href>
+        </Icon>
+        <hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>07231131111113100331032</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>2.3450042,1.2340148,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>07012000001303022011321</name>
+      <styleUrl>#s_ylw-pushpin</styleUrl>
+      <Point>
+        <gx:drawOrder>1</gx:drawOrder>
+        <coordinates>4.5669999,3.4560078,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Polygon1</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          2.3450218,1.2340036,0 2.3449866,1.2340080,0 2.3450042,1.2340327,0 2.3450218,1.2340036,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Polygon2</name>
+      <Style>
+        <LineStyle>
+          <color>ff0000ff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>00000000</color>
+        </PolyStyle>
+      </Style>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          4.5670172,3.4559974,0 4.5669827,3.4559999,0 4.5669998,3.4560261,0 4.5670172,3.4559974,0 
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<project name="EAGGRJavaJarTest" default="all">
+
+	<property name="version" value="2.0"/>
+
+	<property name="bin.dir" value="bin"/>
+	<property name="bin.uk.dir" value="bin/uk"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="eaggr.java.dir" value="../EAGGRJava/jar"/>
+	<property name="eaggr.dlls.dir" value="../EAGGRJava/dlls"/>
+	<property name="src.dir" value="src"/>
+	<property name="test.dir" value="tests"/>
+	<property name="test.results.dir" value="testresults"/>
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${eaggr.java.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="test_classpath">
+		<path refid="classpath" />
+		<pathelement path="${bin.dir}" />
+		<pathelement path="${eaggr.dlls.dir}" />
+	</path>
+
+	<target name="all" description="Perform full clean, compile and run tests" depends="clean,compile,test">
+	</target>
+
+	<target name="clean" description="Delete generated folders and re-create">
+		<delete dir="${bin.uk.dir}" />
+		<delete dir="${test.results.dir}" />
+	</target>
+
+	<target name="compile" description="Compile the source">
+		<echo message="Compile unit tests" />
+		
+		<mkdir dir="${bin.dir}" />
+		
+		<javac srcdir="${test.dir}" destdir="${bin.dir}" classpathref="classpath" debug="on" includeantruntime="false">
+			<compilerarg value="-Xlint" />
+		</javac>
+	</target>
+
+	<target name="test" depends="compile" description="Execute all the tests and generate reports">
+		<echo message="Run Unit Tests" />
+		
+		<mkdir dir="${test.results.dir}" />
+
+		<junit printsummary="yes" haltonfailure="no" maxmemory="1024m" failureproperty="testfailureflag">
+
+			<classpath>
+				<path refid="test_classpath" />
+			</classpath>
+
+			<formatter type="xml" />
+
+			<batchtest fork="yes" todir="${test.results.dir}">
+				<fileset dir="${test.dir}" includes="**/*.java">
+					<filename regex=".*Test\.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+</project>
