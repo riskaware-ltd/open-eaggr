@@ -16,8 +16,8 @@ The OpenEAGGR library has been integrated as an extension/plug-in for the follow
 - [Elasticsearch](http://www.elastic.co/products/elasticsearch)
 
 Full technical details and API examples can be found in the documentation:
-- [Software Design Document] (Documents/Software Design Document.pdf)
-- [Programmer's Guide] (Documents/Programmer's Guide.pdf)
+- [Software Design Document](Documents/Software%20Design%20Document.pdf)
+- [Programmer's Guide](Documents/Programmer's%20Guide.pdf)
 
 ## Prerequisites
 - [MinGW](http://www.mingw.org/) 32 and 64 bit downloads available from [32 bit]( http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/5.1.0/threads-posix/dwarf/) and [64 bit]( http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/5.1.0/threads-posix/seh/) respectively
