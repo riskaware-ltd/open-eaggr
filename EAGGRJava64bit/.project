@@ -18,12 +18,12 @@
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRJava/src</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRJava/src</locationURI>
 		</link>
 		<link>
 			<name>tests</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRJava/tests</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRJava/tests</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

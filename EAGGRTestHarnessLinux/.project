@@ -29,47 +29,47 @@
 		<link>
 			<name>3rdParty</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/3rdParty</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/3rdParty</locationURI>
 		</link>
 		<link>
 			<name>EAGGRTestHarness.cpp</name>
 			<type>1</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/EAGGRTestHarness.cpp</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/EAGGRTestHarness.cpp</locationURI>
 		</link>
 		<link>
 			<name>EvaluationTests</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/EvaluationTests</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/EvaluationTests</locationURI>
 		</link>
 		<link>
 			<name>Src</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGR/Src</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGR/Src</locationURI>
 		</link>
 		<link>
 			<name>SystemTests</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/SystemTests</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/SystemTests</locationURI>
 		</link>
 		<link>
 			<name>TestData</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/TestData</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/TestData</locationURI>
 		</link>
 		<link>
 			<name>TestMacros.hpp</name>
 			<type>1</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/TestMacros.hpp</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/TestMacros.hpp</locationURI>
 		</link>
 		<link>
 			<name>TestUtilities</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/TestUtilities</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/TestUtilities</locationURI>
 		</link>
 		<link>
 			<name>UnitTests</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRTestHarness/UnitTests</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRTestHarness/UnitTests</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

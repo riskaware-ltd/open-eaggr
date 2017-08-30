@@ -29,7 +29,7 @@
 		<link>
 			<name>Src</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGR/Src</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/EAGGR/Src</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

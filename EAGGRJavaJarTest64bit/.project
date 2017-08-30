@@ -18,7 +18,7 @@
 		<link>
 			<name>tests</name>
 			<type>2</type>
-			<locationURI>copy_PARENT/EAGGRJavaJarTest/tests</locationURI>
+			<locationURI>PARENT-1-PARENT_LOC/EAGGRJavaJarTest/tests</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>
