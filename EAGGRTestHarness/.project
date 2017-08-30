@@ -3,7 +3,7 @@
 	<name>EAGGRTestHarness</name>
 	<comment></comment>
 	<projects>
-		<project>DGGS</project>
+		<project>EAGGR</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
