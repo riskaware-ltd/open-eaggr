@@ -3,7 +3,7 @@
 	<name>EAGGRTestHarnessLinux</name>
 	<comment></comment>
 	<projects>
-		<project>DGGS</project>
+		<project>EAGGRLinux</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

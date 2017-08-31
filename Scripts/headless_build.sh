@@ -2,12 +2,12 @@
 
 cd ..
 
-if ! eclipse --launcher.suppressErrors -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data ./Scripts/temp_workspace -import "./EAGGRLinux" -cleanBuild all ; then
+if ! eclipse --launcher.suppressErrors -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data ./Scripts/temp_workspace -import "./EAGGRLinux" -cleanBuild all -vmargs -Xmx1500M ; then
     echo "Failed to build EAGGR source"
     exit 1
 fi
 
-if ! eclipse --launcher.suppressErrors -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data ./Scripts/temp_workspace -import "./EAGGRTestHarnessLinux" -cleanBuild all ; then
+if ! eclipse --launcher.suppressErrors -nosplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data ./Scripts/temp_workspace -import "./EAGGRTestHarnessLinux" -cleanBuild all -vmargs -Xmx1500M ; then
     echo "Failed to build EAGGRTestHarness source"
     exit 1
 fi
