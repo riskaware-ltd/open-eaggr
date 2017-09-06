@@ -27,6 +27,20 @@ Full technical details and API examples can be found in the documentation:
 - [PostgreSQL 9.5](https://www.postgresql.org/) and (optionally) [PostGIS](http://www.postgis.net/) if using the PostGIS extension
 - [Elasticsearch 2.4.0](http://www.elastic.co/products/elasticsearch) if using the Elasticsearch plug-in
 
+## Downloads
+
+Binaries for Windows are available for download from the [GitHub release repository](https://github.com/riskaware-ltd/open-eaggr/releases). The latest releases are available using the links below.
+
+- [C API 32 bit](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-C-API-x86.zip)
+- [C API 64 bit](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-C-API-x86_64.zip)
+- [Java API 32 bit](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-java-api-x86.zip)
+- [Java API 64 bit](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-java-api-x86_64.zip)
+- [Python API Wheel](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-python-wheel.zip)
+- [PostgreSQL 9.5 Extension](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-postgres-9.5-extension.zip)
+- [Elasticsearch 2.4.0 Plug-in](https://github.com/riskaware-ltd/open-eaggr/releases/download/v2.0/openeaggr-elasticsearch-2.4.0-plugin.zip)
+
+Please refer to the sections below for instructions on using the built binaries in client applications and to integrate the PostgreSQL extension or Elasticsearch plug-in.
+
 ## Build Instructions
 
 The OpenEAGGR library can be built for 32 or 64 bit Windows or 64 bit Linux. These build instructions are based on building for Windows 7 and Scientific Linux 7.1 (which is derived from RedHat Linux).
