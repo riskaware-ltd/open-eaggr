@@ -78,7 +78,7 @@ namespace EAGGR
           private:
             static constexpr double m_APERTURE = 4.0;
 
-            static constexpr double m_HEIGHT_TO_EDGE_RATIO = sqrt(3.0) / 2.0;
+            static const double m_HEIGHT_TO_EDGE_RATIO = sqrt(3.0) / 2.0;
         };
       }
     }
