@@ -31,7 +31,7 @@
 
 #include "GeoJsonImporter.hpp"
 
-#include "ogrgeojsonreader.h"
+#include "ogr_geometry.h"
 
 #include "Src/EAGGRException.hpp"
 
@@ -44,13 +44,8 @@ namespace EAGGR
     GeoJsonImporter::GeoJsonImporter(const std::string& a_geoJsonString, const double a_accuracy)
         : AbstractShapeImporter(a_accuracy)
     {
-      OGRGeometry* pGeometry;
-
-      OGRGeoJSONReader reader;
-      reader.Parse(a_geoJsonString.c_str());
-
-      pGeometry = OGRGeoJSONReadGeometry(reader.GetJSonObject());
-
+      OGRGeometry* pGeometry = OGRGeometryFactory::createFromGeoJson(a_geoJsonString.c_str());
+      
       // If the GeoJSON string was invalid throw exception
       if (pGeometry == NULL)
       {

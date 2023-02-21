@@ -28,6 +28,7 @@
 //------------------------------------------------------
 
 #include <sstream>
+#include <cmath>
 
 #include "CoordinateConverter.hpp"
 
@@ -40,16 +41,21 @@ namespace EAGGR
   {
     CoordinateConverter::CoordinateConverter()
     {
-      m_wgs84CoordinateSystem = pj_init_plus("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs");
+        m_wgs84CoordinateSystem_p = proj_create_crs_to_crs(PJ_DEFAULT_CTX,
+                                                       "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+                                                       "+proj=longlat +ellps=sphere +datum=WGS84 +no_defs",
+                                                        NULL);
 
-      if (m_wgs84CoordinateSystem == NULL)
+      if (m_wgs84CoordinateSystem_p == NULL)
       {
         throw EAGGRException("Failed to create WGS84 coordinate system.");
       }
 
-      m_sphereCoordinateSystem = pj_init_plus("+proj=longlat +ellps=sphere +datum=WGS84 +no_defs");
-
-      if (m_sphereCoordinateSystem == NULL)
+      m_sphereCoordinateSystem_p = proj_create_crs_to_crs(PJ_DEFAULT_CTX,
+                                                        "+proj=longlat +ellps=sphere +datum=WGS84 +no_defs",
+                                                        "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+                                                        NULL);
+      if (m_sphereCoordinateSystem_p == NULL)
       {
         throw EAGGRException("Failed to create spherical coordinate system.");
       }
@@ -57,14 +63,14 @@ namespace EAGGR
 
     CoordinateConverter::~CoordinateConverter()
     {
-      if (m_wgs84CoordinateSystem != NULL)
-      {
-        pj_free (m_wgs84CoordinateSystem);
+      if (m_wgs84CoordinateSystem_p != NULL)
+      { 
+          proj_destroy(m_wgs84CoordinateSystem_p);
       }
 
-      if (m_sphereCoordinateSystem != NULL)
-      {
-        pj_free (m_sphereCoordinateSystem);
+      if (m_sphereCoordinateSystem_p != NULL)
+      { 
+          proj_destroy(m_sphereCoordinateSystem_p);
       }
     }
 
@@ -77,21 +83,21 @@ namespace EAGGR
       EAGGR::Utilities::Maths::Radians convertedLatitude = latitudeRadians;
       EAGGR::Utilities::Maths::Radians convertedLongitude = longitudeRadians;
 
+      PJ_COORD c;
       // Initially assume a height of zero and perform the conversion
-      double z = 0.0;
+      c.lpzt.z     = 0.0;
+      c.lpzt.t       = HUGE_VAL;
+      c.xy.x       = convertedLongitude;
+      c.xy.y       = convertedLatitude;
 
-      int returnCode = pj_transform(
-          m_wgs84CoordinateSystem,
-          m_sphereCoordinateSystem,
-          m_NUM_POINTS_TO_CONVERT,
-          m_POINT_OFFSET,
-          &convertedLongitude,
-          &convertedLatitude,
-          &z);
+      int returnCode = proj_trans_array(m_wgs84CoordinateSystem_p,
+                                    PJ_FWD,
+                                    m_NUM_POINTS_TO_CONVERT,
+                                    &c);
 
       if (returnCode != 0)
       {
-        char* error = pj_strerrno(returnCode);
+        const char* error = proj_errno_string(returnCode);
         std::stringstream stream;
         stream << "Coordinate transformation error: " << error;
         throw EAGGRException(stream.str());
@@ -102,20 +108,17 @@ namespace EAGGR
       // This provides the correct lat/long to a good approximation.
       convertedLatitude = latitudeRadians;
       convertedLongitude = longitudeRadians;
-      z = -z;
+      
+      c.lpzt.z = -c.lpzt.z;
+      c.lpzt.t = HUGE_VAL;
+      c.xy.x   = longitudeRadians;
+      c.xy.y   = latitudeRadians;
 
-      returnCode = pj_transform(
-          m_wgs84CoordinateSystem,
-          m_sphereCoordinateSystem,
-          m_NUM_POINTS_TO_CONVERT,
-          m_POINT_OFFSET,
-          &convertedLongitude,
-          &convertedLatitude,
-          &z);
+      returnCode = proj_trans_array(m_wgs84CoordinateSystem_p, PJ_FWD, m_NUM_POINTS_TO_CONVERT, &c);
 
       if (returnCode != 0)
       {
-        char* error = pj_strerrno(returnCode);
+        const char* error = proj_errno_string(returnCode);
         std::stringstream stream;
         stream << "Coordinate transformation error: " << error;
         throw EAGGRException(stream.str());
@@ -136,18 +139,17 @@ namespace EAGGR
 
       double z = 0.0;
 
-      int returnCode = pj_transform(
-          m_sphereCoordinateSystem,
-          m_wgs84CoordinateSystem,
-          m_NUM_POINTS_TO_CONVERT,
-          m_POINT_OFFSET,
-          &longitudeRadians,
-          &latitudeRadians,
-          &z);
+      PJ_COORD c;
+      c.lpzt.z = 0.0;
+      c.lpzt.t = HUGE_VAL;
+      c.xy.x   = longitudeRadians;
+      c.xy.y   = latitudeRadians;
+
+      int returnCode = proj_trans_array(m_sphereCoordinateSystem_p, PJ_FWD, m_NUM_POINTS_TO_CONVERT, &c);
 
       if (returnCode != 0)
       {
-        char* error = pj_strerrno(returnCode);
+        const char* error = proj_errno_string(returnCode);
         std::stringstream stream;
         stream << "Coordinate transformation error: " << error;
         throw EAGGRException(stream.str());

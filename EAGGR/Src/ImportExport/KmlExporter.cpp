@@ -33,6 +33,7 @@
 #include <fstream>
 #include <algorithm>
 #include <cstring>
+#include <cmath>
 
 #include "KmlExporter.hpp"
 
@@ -49,7 +50,7 @@ namespace EAGGR
   {
     // Represents ~1cm accuracy
     static const int LAT_LON_NUM_DP = 7;
-    static constexpr Maths::Degrees HALF_MIN_INCREMENT = pow(10.0, -LAT_LON_NUM_DP) / 2.0;
+    static const Maths::Degrees HALF_MIN_INCREMENT = std::pow(10.0, -LAT_LON_NUM_DP) / 2.0;
 
     KmlExporter::KmlExporter(
         const EAGGR::Model::Projection::IProjection* const a_pProjection,
