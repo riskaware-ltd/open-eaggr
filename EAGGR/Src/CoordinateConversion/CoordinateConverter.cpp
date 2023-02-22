@@ -41,59 +41,48 @@ namespace EAGGR
   {
     CoordinateConverter::CoordinateConverter()
     {
-        m_wgs84CoordinateSystem_p = proj_create_crs_to_crs(PJ_DEFAULT_CTX,
-                                                       "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-                                                       "+proj=longlat +ellps=sphere +datum=WGS84 +no_defs",
-                                                        NULL);
+        m_ctx_p = proj_context_create();
+        if (m_ctx_p == NULL) 
+        { 
+            throw EAGGRException("Failed to create proj context."); 
+        }
+        
+        m_wgs84ToSphereCoordinateSystem_p = proj_create(
+            m_ctx_p, "+proj=pipeline +step +inv +proj=longlat +datum=WGS84 +ellps=WGS84 +step +proj=longlat +datum=WGS84 +ellps=sphere");
 
-      if (m_wgs84CoordinateSystem_p == NULL)
-      {
-        throw EAGGRException("Failed to create WGS84 coordinate system.");
-      }
-
-      m_sphereCoordinateSystem_p = proj_create_crs_to_crs(PJ_DEFAULT_CTX,
-                                                        "+proj=longlat +ellps=sphere +datum=WGS84 +no_defs",
-                                                        "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-                                                        NULL);
-      if (m_sphereCoordinateSystem_p == NULL)
-      {
-        throw EAGGRException("Failed to create spherical coordinate system.");
-      }
+        if (m_wgs84ToSphereCoordinateSystem_p == NULL) 
+        { 
+            throw EAGGRException("Failed to create WGS84 to sphere projection pipeline."); 
+        }
     }
 
     CoordinateConverter::~CoordinateConverter()
     {
-      if (m_wgs84CoordinateSystem_p != NULL)
-      { 
-          proj_destroy(m_wgs84CoordinateSystem_p);
-      }
+        if (m_wgs84ToSphereCoordinateSystem_p != NULL) 
+        { 
+            proj_destroy(m_wgs84ToSphereCoordinateSystem_p); 
+        }
 
-      if (m_sphereCoordinateSystem_p != NULL)
-      { 
-          proj_destroy(m_sphereCoordinateSystem_p);
-      }
+        if (m_ctx_p != NULL) 
+        { 
+            proj_context_destroy(m_ctx_p); 
+        }
     }
 
     EAGGR::LatLong::SphericalAccuracyPoint CoordinateConverter::ConvertWGS84ToSphere(
         const EAGGR::LatLong::Wgs84AccuracyPoint a_wgs84Point) const
-    {
-      EAGGR::Utilities::Maths::Radians latitudeRadians = a_wgs84Point.GetLatitudeInRadians();
-      EAGGR::Utilities::Maths::Radians longitudeRadians = a_wgs84Point.GetLongitudeInRadians();
-
-      EAGGR::Utilities::Maths::Radians convertedLatitude = latitudeRadians;
-      EAGGR::Utilities::Maths::Radians convertedLongitude = longitudeRadians;
-
-      PJ_COORD c;
+    { 
+      PJ_COORD c;        
       // Initially assume a height of zero and perform the conversion
       c.lpzt.z     = 0.0;
-      c.lpzt.t       = HUGE_VAL;
-      c.xy.x       = convertedLongitude;
-      c.xy.y       = convertedLatitude;
+      c.lpzt.t     = HUGE_VAL;
+      c.lpzt.lam   = a_wgs84Point.GetLongitudeInRadians();
+      c.lpzt.phi   = a_wgs84Point.GetLatitudeInRadians();
 
-      int returnCode = proj_trans_array(m_wgs84CoordinateSystem_p,
-                                    PJ_FWD,
-                                    m_NUM_POINTS_TO_CONVERT,
-                                    &c);
+      int returnCode = proj_trans_array(m_wgs84ToSphereCoordinateSystem_p,
+                                        PJ_FWD,
+                                        m_NUM_POINTS_TO_CONVERT,
+                                        &c);
 
       if (returnCode != 0)
       {
@@ -106,15 +95,11 @@ namespace EAGGR
       // First conversion provides a height offset with an offset in the latitude/longitude values
       // Need to perform the conversion again on the original lat/long using the negated height offset
       // This provides the correct lat/long to a good approximation.
-      convertedLatitude = latitudeRadians;
-      convertedLongitude = longitudeRadians;
-      
       c.lpzt.z = -c.lpzt.z;
-      c.lpzt.t = HUGE_VAL;
-      c.xy.x   = longitudeRadians;
-      c.xy.y   = latitudeRadians;
+      c.lpzt.lam = a_wgs84Point.GetLongitudeInRadians();
+      c.lpzt.phi = a_wgs84Point.GetLatitudeInRadians();
 
-      returnCode = proj_trans_array(m_wgs84CoordinateSystem_p, PJ_FWD, m_NUM_POINTS_TO_CONVERT, &c);
+      returnCode = proj_trans_array(m_wgs84ToSphereCoordinateSystem_p, PJ_FWD, m_NUM_POINTS_TO_CONVERT, &c);
 
       if (returnCode != 0)
       {
@@ -124,9 +109,12 @@ namespace EAGGR
         throw EAGGRException(stream.str());
       }
 
+      const double latitude = RADIANS_IN_DEG(c.xy.y);
+      // To maintain previous behaviour of proj4 set longitdue on the poles to be zero
+      const double longitude = latitude == 90.0 || latitude == -90.0 ? 0.0 : RADIANS_IN_DEG(c.xy.x);
       return EAGGR::LatLong::SphericalAccuracyPoint(
-          RADIANS_IN_DEG(convertedLatitude),
-          RADIANS_IN_DEG(convertedLongitude),
+          latitude,
+          longitude,
           EAGGR::LatLong::SphericalAccuracyPoint::SquareMetresToAngleAccuracy(
               a_wgs84Point.GetAccuracy()));
     }
@@ -134,18 +122,13 @@ namespace EAGGR
     EAGGR::LatLong::Wgs84AccuracyPoint CoordinateConverter::ConvertSphereToWGS84(
         const EAGGR::LatLong::SphericalAccuracyPoint a_spherePoint) const
     {
-      double latitudeRadians = a_spherePoint.GetLatitudeInRadians();
-      double longitudeRadians = a_spherePoint.GetLongitudeInRadians();
-
-      double z = 0.0;
-
       PJ_COORD c;
       c.lpzt.z = 0.0;
       c.lpzt.t = HUGE_VAL;
-      c.xy.x   = longitudeRadians;
-      c.xy.y   = latitudeRadians;
+      c.lpzt.lam = a_spherePoint.GetLongitudeInRadians();
+      c.lpzt.phi = a_spherePoint.GetLatitudeInRadians();
 
-      int returnCode = proj_trans_array(m_sphereCoordinateSystem_p, PJ_FWD, m_NUM_POINTS_TO_CONVERT, &c);
+      int returnCode = proj_trans_array(m_wgs84ToSphereCoordinateSystem_p, PJ_INV, m_NUM_POINTS_TO_CONVERT, &c);
 
       if (returnCode != 0)
       {
@@ -155,9 +138,12 @@ namespace EAGGR
         throw EAGGRException(stream.str());
       }
 
+      const double latitude = RADIANS_IN_DEG(c.xy.y);
+      // To maintain previous behaviour of proj4 set longitdue on the poles to be zero
+      const double longitude = latitude == 90.0 || latitude == -90.0 ? 0.0 : RADIANS_IN_DEG(c.xy.x);
       return EAGGR::LatLong::Wgs84AccuracyPoint(
-          RADIANS_IN_DEG(latitudeRadians),
-          RADIANS_IN_DEG(longitudeRadians),
+          latitude,
+          longitude,
           EAGGR::LatLong::SphericalAccuracyPoint::AngleAccuracyToSquareMetres(
               a_spherePoint.GetAccuracy()));
     }

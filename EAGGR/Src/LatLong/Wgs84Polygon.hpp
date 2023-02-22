@@ -45,7 +45,7 @@ namespace EAGGR
         /// Polygon is initialised with no inner rings and no points in its outer ring.
         Wgs84Polygon();
         /// Frees up memory allocated to the linestrings that make up the polygon.
-        ~Wgs84Polygon();
+        virtual ~Wgs84Polygon();
 
         /// Adds a point to the linestring that defines the polygon's outer ring.
         /// @param a_latitude WGS84 latitude of the point.

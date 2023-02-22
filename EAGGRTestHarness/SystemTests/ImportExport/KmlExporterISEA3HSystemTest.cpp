@@ -115,14 +115,14 @@ SYSTEM_TEST(KMLExporterISEA3H, IcosahedronAllFaces)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HIcosahedronAllFacesKmlExport.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HIcosahedronAllFacesKmlExport.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HIcosahedronAllFacesKmlExport.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HIcosahedronAllFacesKmlExport.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -194,14 +194,14 @@ SYSTEM_TEST(KMLExporterISEA3H, AllFacesResolution1)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HAllFacesResolution1.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HAllFacesResolution1.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HAllFacesResolution1.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HAllFacesResolution1.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -247,14 +247,14 @@ SYSTEM_TEST(KMLExporterISEA3H, Face3Resolution2)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HFace3Resolution2.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HFace3Resolution2.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HFace3Resolution2.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HFace3Resolution2.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -318,14 +318,14 @@ SYSTEM_TEST(KMLExporterISEA3H, Face3Resolution3)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HFace3Resolution3.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HFace3Resolution3.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HFace3Resolution3.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HFace3Resolution3.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -378,14 +378,14 @@ SYSTEM_TEST(KMLExporterISEA3H, Cities100m2Accuracy)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HCities100m2Accuracy.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HCities100m2Accuracy.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HCities100m2Accuracy.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HCities100m2Accuracy.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -443,14 +443,14 @@ SYSTEM_TEST(KMLExporterISEA3H, GridTest)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HGrid100m2Accuracy.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HGrid100m2Accuracy.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HGrid100m2Accuracy.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HGrid100m2Accuracy.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -499,14 +499,14 @@ SYSTEM_TEST(KMLExporterISEA3H, ParentsTest)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HParents.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HParents.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HParents.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HParents.kml");
 
   std::istringstream actualStream(output.str());
 
@@ -555,14 +555,14 @@ SYSTEM_TEST(KMLExporterISEA3H, ChildrenTest)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("../EAGGRTestHarness/TestData/ISEA3HChildren.kml");
+    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HChildren.kml");
     exporter.Export(ouputFile);
     ouputFile.close();
   }
 
   // Read expected output from file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/ISEA3HChildren.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA3HChildren.kml");
 
   std::istringstream actualStream(output.str());
 

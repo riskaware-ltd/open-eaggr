@@ -53,6 +53,11 @@ namespace EAGGR
       }
     }
 
+    Wgs84AccuracyPoint::~Wgs84AccuracyPoint() 
+    {
+
+    }
+
     double Wgs84AccuracyPoint::GetAccuracy() const
     {
       return (m_accuracy);

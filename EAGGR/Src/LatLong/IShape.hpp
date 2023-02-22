@@ -42,6 +42,8 @@ namespace EAGGR
     /// Interface for shape class implementations.
     class IShape
     {
+    public:
+        virtual ~IShape() {}
     };
   }
 }
