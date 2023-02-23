@@ -110,11 +110,6 @@ namespace EAGGR
         Wgs84AccuracyPoint wgs84VertexPoint = m_coordinateConverter.ConvertSphereToWGS84(
             vertexPoint);
 
-        if (wgs84VertexPoint.GetLongitude() == -108) 
-        { 
-            std::cout << "change\n";
-        }
-
         polygon.vertices.push_back(wgs84VertexPoint);
       }
 

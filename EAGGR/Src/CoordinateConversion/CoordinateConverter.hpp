@@ -71,7 +71,7 @@ namespace EAGGR
         static const int m_POINT_OFFSET = 1;
 
         PJ* m_wgs84ToSphereCoordinateSystem_p;
-        PJ_CONTEXT* m_ctx_p;
+        PJ_CONTEXT* m_projContext_p;
     };
   }
 }
