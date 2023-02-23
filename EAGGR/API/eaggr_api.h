@@ -276,7 +276,11 @@ extern "C"
     #endif
 #else
     // Linux
-    #define EXPORT __attribute__ ((visibility("default")))
+    #ifdef EAGGR_BUILD_STATIC
+        #define EXPORT
+    #else
+        #define EXPORT __attribute__((visibility("default")))
+    #endif
 #endif
 
   /**
