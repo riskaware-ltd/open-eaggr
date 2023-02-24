@@ -96,7 +96,7 @@ UNIT_TEST(KmlExporter, Export)
    ouputFile.close();*/
 
   // Read expected output from file
-  std::ifstream expectedFile("../EAGGRTestHarness/TestData/ExpectedKmlExport.kml");
+  std::ifstream expectedFile("OpenEAGGR/EAGGRTestHarness/TestData/ExpectedKmlExport.kml");
   if (!expectedFile.is_open())
   {
     // Unable to open file containing expected KML
@@ -115,7 +115,7 @@ UNIT_TEST(KmlExporter, Export)
   }
 
   // Export the shapes to a KML file
-  char filename[] = "../EAGGRTestHarness/TestData/ActualKmlExport.kml";
+  char filename[] = "OpenEAGGR/EAGGRTestHarness/TestData/ActualKmlExport.kml";
   exporter.ExportToFile(filename);
 
   // Read the KML from the generated file
@@ -124,7 +124,7 @@ UNIT_TEST(KmlExporter, Export)
 
   expectedFile.close();
 
-  std::ifstream expectedFile2("../EAGGRTestHarness/TestData/ExpectedKmlExport.kml");
+  std::ifstream expectedFile2("OpenEAGGR/EAGGRTestHarness/TestData/ExpectedKmlExport.kml");
   filesMatch = matcher.Compare(expectedFile2, actualFile);
 
   if (!filesMatch)

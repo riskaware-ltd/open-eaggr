@@ -37,8 +37,8 @@ using namespace EAGGR::TestUtilities;
 
 UNIT_TEST(KmlFileMatcher, MatchingFiles)
 {
-  std::ifstream stream1("../EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
-  std::ifstream stream2("../EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
+  std::ifstream stream1("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
+  std::ifstream stream2("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
 
   KmlFileMatcher matcher;
   bool filesMatch = matcher.Compare(stream1, stream2);
@@ -51,8 +51,8 @@ UNIT_TEST(KmlFileMatcher, MatchingFiles)
 
 UNIT_TEST(KmlFileMatcher, NonMatchingFiles)
 {
-  std::ifstream stream1("../EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
-  std::ifstream stream2("../EAGGRTestHarness/TestData/KmlMatcherTest/NonMatchingFile.kml");
+  std::ifstream stream1("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
+  std::ifstream stream2("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/NonMatchingFile.kml");
 
   KmlFileMatcher matcher;
   bool filesMatch = matcher.Compare(stream1, stream2);
@@ -65,8 +65,8 @@ UNIT_TEST(KmlFileMatcher, NonMatchingFiles)
 
 UNIT_TEST(KmlFileMatcher, AdditionalLineFile)
 {
-  std::ifstream stream1("../EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
-  std::ifstream stream2("../EAGGRTestHarness/TestData/KmlMatcherTest/AdditionalLineFile.kml");
+  std::ifstream stream1("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
+  std::ifstream stream2("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/AdditionalLineFile.kml");
 
   KmlFileMatcher matcher;
   bool filesMatch = matcher.Compare(stream1, stream2);
@@ -79,8 +79,8 @@ UNIT_TEST(KmlFileMatcher, AdditionalLineFile)
 
 UNIT_TEST(KmlFileMatcher, FewerLinesFile)
 {
-  std::ifstream stream1("../EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
-  std::ifstream stream2("../EAGGRTestHarness/TestData/KmlMatcherTest/FewerLinesFile.kml");
+  std::ifstream stream1("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/BaselineFile.kml");
+  std::ifstream stream2("OpenEAGGR/EAGGRTestHarness/TestData/KmlMatcherTest/FewerLinesFile.kml");
 
   KmlFileMatcher matcher;
   bool filesMatch = matcher.Compare(stream1, stream2);

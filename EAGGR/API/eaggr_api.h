@@ -266,15 +266,21 @@ extern "C"
 #endif
 
 #ifdef _WIN32
-// Windows
-#ifdef EAGGR_BUILD_DLL
-#define EXPORT __declspec(dllexport)
+    // Windows
+    #ifdef EAGGR_BUILD_STATIC
+        #define EXPORT
+    #elif defined(EAGGR_BUILD_DLL)
+        #define EXPORT __declspec(dllexport)
+    #else
+        #define EXPORT __declspec(dllimport)
+    #endif
 #else
-#define EXPORT __declspec(dllimport)
-#endif
-#else
-// Linux
-#define EXPORT __attribute__ ((visibility("default")))
+    // Linux
+    #ifdef EAGGR_BUILD_STATIC
+        #define EXPORT
+    #else
+        #define EXPORT __attribute__((visibility("default")))
+    #endif
 #endif
 
   /**

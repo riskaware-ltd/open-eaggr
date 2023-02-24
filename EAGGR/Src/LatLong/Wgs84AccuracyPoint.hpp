@@ -50,6 +50,8 @@ namespace EAGGR
             const Utilities::Maths::Degrees a_longitude,
             const Utilities::Maths::Degrees a_accuracy);
 
+        virtual ~Wgs84AccuracyPoint();
+
         /// @return The accuracy of the point as an angle in metres squared
         double GetAccuracy() const;
 

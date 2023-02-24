@@ -66,7 +66,7 @@ UNIT_TEST(CoordinateConverter, ConvertWGS84ToSpherical)
 
   EAGGR::LatLong::Wgs84AccuracyPoint wgs84PointAtNPole2(90.0, -100.0, ACCURACY);
   expectedLatitude = 90.0;
-  expectedLongitude = 0.0;// Proj4 outputs 0 for all longitude points at the pole
+  expectedLongitude = 0.0;// longitude returned as zero on the poles to replicate previous proj4
   sphericalPoint = converter.ConvertWGS84ToSphere(wgs84PointAtNPole2);
   EXPECT_NEAR(expectedLatitude, sphericalPoint.GetLatitude(), LAT_LONG_TOLERANCE);
   EXPECT_NEAR(expectedLongitude, sphericalPoint.GetLongitude(), LAT_LONG_TOLERANCE);
@@ -82,7 +82,7 @@ UNIT_TEST(CoordinateConverter, ConvertWGS84ToSpherical)
 
   EAGGR::LatLong::Wgs84AccuracyPoint wgs84PointAtSPole2(-90.0, -100.0, ACCURACY);
   expectedLatitude = -90.0;
-  expectedLongitude = 0.0;// Proj4 outputs 0 for all longitude points at the pole
+  expectedLongitude = 0.0;//  longitude returned as zero on the poles to replicate previous proj4
   sphericalPoint = converter.ConvertWGS84ToSphere(wgs84PointAtSPole2);
   EXPECT_NEAR(expectedLatitude, sphericalPoint.GetLatitude(), LAT_LONG_TOLERANCE);
   EXPECT_NEAR(expectedLongitude, sphericalPoint.GetLongitude(), LAT_LONG_TOLERANCE);
@@ -150,7 +150,7 @@ UNIT_TEST(CoordinateConverter, ConvertSphericalToWGS84)
 
   EAGGR::LatLong::SphericalAccuracyPoint sphericalPointAtNPole2(90.0, -100.0, ACCURACY);
   expectedLatitude = 90.0;
-  expectedLongitude = 0.0;// Proj4 outputs 0 for all longitude points at the pole
+  expectedLongitude = 0.0;// longitude returned as zero on the poles to replicate previous proj4
   wgs84Point = converter.ConvertSphereToWGS84(sphericalPointAtNPole2);
   EXPECT_NEAR(expectedLatitude, wgs84Point.GetLatitude(), LAT_LONG_TOLERANCE);
   EXPECT_NEAR(expectedLongitude, wgs84Point.GetLongitude(), LAT_LONG_TOLERANCE);
@@ -166,7 +166,7 @@ UNIT_TEST(CoordinateConverter, ConvertSphericalToWGS84)
 
   EAGGR::LatLong::SphericalAccuracyPoint sphericalPointAtSPole2(-90.0, -100.0, ACCURACY);
   expectedLatitude = -90.0;
-  expectedLongitude = 0.0;// Proj4 outputs 0 for all longitude points at the pole
+  expectedLongitude = 0.0;// longitude returned as zero on the poles to replicate previous proj4
   wgs84Point = converter.ConvertSphereToWGS84(sphericalPointAtSPole2);
   EXPECT_NEAR(expectedLatitude, wgs84Point.GetLatitude(), LAT_LONG_TOLERANCE);
   EXPECT_NEAR(expectedLongitude, wgs84Point.GetLongitude(), LAT_LONG_TOLERANCE);

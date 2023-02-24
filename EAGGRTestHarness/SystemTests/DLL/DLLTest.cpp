@@ -868,7 +868,7 @@ SYSTEM_TEST(DLL, EAGGR_CreateDggsKmlFile)
   DGGS_Handle handle = NULL;
   DGGS_ReturnCode returnCode;
 
-  const char filename[] = "../EAGGRTestHarness/TestData/ActualKmlFile.kml";
+  const char filename[] = "OpenEAGGR/EAGGRTestHarness/TestData/ActualKmlFile.kml";
   DGGS_Cell cells[] =
   {
     "07231131111113100331001", "07012000001303022011321"
@@ -883,7 +883,7 @@ SYSTEM_TEST(DLL, EAGGR_CreateDggsKmlFile)
 
   // Read expected output file
   std::ifstream expectedFile;
-  expectedFile.open("../EAGGRTestHarness/TestData/DLL_CreateDggsKmlFile.kml");
+  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/DLL_CreateDggsKmlFile.kml");
   if (!expectedFile.is_open())
   {
     // Unable to open file containing expected KML

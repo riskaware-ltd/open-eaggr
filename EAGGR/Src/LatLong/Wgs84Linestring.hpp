@@ -46,7 +46,7 @@ namespace EAGGR
         /// Linestring is initialised with no points.
         Wgs84Linestring();
         /// Frees up memory allocated to the points in the linestring.
-        ~Wgs84Linestring();
+        virtual ~Wgs84Linestring();
 
         /// Adds a point to the linestring.
         /// @param a_latitude WGS84 latitude of the point.

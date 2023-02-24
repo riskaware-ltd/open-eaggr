@@ -29,7 +29,7 @@
 
 #pragma once
 
-#include "proj_api.h"
+#include "proj.h"
 
 #include "Src/LatLong/SphericalAccuracyPoint.hpp"
 #include "Src/LatLong/Wgs84AccuracyPoint.hpp"
@@ -70,8 +70,8 @@ namespace EAGGR
         static const long m_NUM_POINTS_TO_CONVERT = 1;
         static const int m_POINT_OFFSET = 1;
 
-        projPJ m_wgs84CoordinateSystem;
-        projPJ m_sphereCoordinateSystem;
+        PJ* m_wgs84ToSphereCoordinateSystem_p;
+        PJ_CONTEXT* m_projContext_p;
     };
   }
 }
