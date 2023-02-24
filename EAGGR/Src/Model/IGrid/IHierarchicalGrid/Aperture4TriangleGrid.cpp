@@ -43,6 +43,8 @@ namespace EAGGR
     {
       namespace HierarchicalGrid
       {
+        const double Aperture4TriangleGrid::m_HEIGHT_TO_EDGE_RATIO = std::sqrt(3.0) / 2.0;
+
         unsigned short Aperture4TriangleGrid::GetResolutionFromAccuracy(
             const double a_accuracy) const
         {

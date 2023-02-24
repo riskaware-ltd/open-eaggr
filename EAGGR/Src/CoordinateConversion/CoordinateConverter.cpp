@@ -42,9 +42,7 @@ namespace
         if (a_returnCode != 0)
         {
             const char* errorMessage = proj_errno_string(a_returnCode);
-            std::stringstream stream;
-            stream << "Coordinate transformation error: " << errorMessage;
-            throw EAGGR::EAGGRException(stream.str());
+            throw EAGGR::EAGGRException("Coordinate transformation error: " + std::string(errorMessage));
         }
     }
 }
