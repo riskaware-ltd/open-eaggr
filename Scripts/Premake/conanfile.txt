@@ -1,0 +1,25 @@
+# to ensure linking to gtest works correctly ensure you set your default conan settings compile to C++11 by running this command:
+# conan profile update settings.compiler.libcxx=libstdc++11 default
+[requires]
+# Override lib version for compatability
+zlib/1.2.13
+# end override
+gdal/3.5.2
+libpqxx/7.7.4
+netcdf/4.8.1
+gtest/1.13.0
+boost/1.69.0
+pybind11/2.10.1
+
+[generators]
+premake
+
+[options]
+gdal:shared=True
+boost:header_only=True
+
+[imports]
+#Open EAGGR's Unit Tests
+lib, libgdal* -> ../../bin/outputdir/OpenEAGGRTestHarness/
+bin, *.dll -> ../../bin/outputdir/OpenEAGGRTestHarness/
+res, * -> ./bin/data
