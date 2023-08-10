@@ -7,7 +7,7 @@ project "OpenEAGGRTestHarness" -- testing project name
     cppdialect ("C++14")
     externalwarnings "Off" 
     warnings "Off"
-    debugdir "../"
+    debugdir "../../"
     
     vpaths { 
         {["*/Header Files"] = {"**.hpp"}},

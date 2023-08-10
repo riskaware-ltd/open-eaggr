@@ -33,12 +33,12 @@
 
 /// Used to group together all the unit tests.
 #define UNIT_TEST(TestBase, TestName) \
-   TEST(UnitTest##_##TestBase, TestName)
+   TEST(UnitTest####TestBase, TestName)
 
 /// Used to group together all the system tests.
 #define SYSTEM_TEST(TestBase, TestName) \
-   TEST(SystemTest##_##TestBase, TestName)
+   TEST(SystemTest####TestBase, TestName)
 
 /// Used to group together all the evaluation tests.
 #define EVALUATION_TEST(TestBase, TestName) \
-   TEST(EvaluationTest##_##TestBase, TestName)
+   TEST(EvaluationTest####TestBase, TestName)
