@@ -6,10 +6,8 @@ zlib/1.2.13
 # end override
 gdal/3.5.2
 libpqxx/7.7.4
-netcdf/4.8.1
 gtest/1.13.0
 boost/1.69.0
-pybind11/2.10.1
 
 [generators]
 premake
