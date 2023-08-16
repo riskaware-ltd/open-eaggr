@@ -41,6 +41,11 @@
 
 #include "TestUtilities/KmlFileMatcher.hpp"
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+    #include <Windows.h>
+    #define IS_ON_WINDOWS true
+#endif
+
 using namespace EAGGR::Model;
 using namespace EAGGR::Model::Projection;
 using namespace EAGGR::Model::PolyhedralGlobe;
@@ -51,10 +56,46 @@ using namespace EAGGR::ImportExport;
 /// Set this flag to rewrite the expected KML files - use if the expected output changes.
 static const bool RECREATE_KML_FILES = false;
 
+void CheckKMLFile(const std::string& a_expectedFilePath, const std::ostringstream& a_actualString)
+{
+    struct stat buffer;   
+    const bool fileExists = (stat (a_expectedFilePath.c_str(), &buffer) == 0); 
+
+    ASSERT_TRUE(fileExists) << "Expected file does not exist\n";
+
+    // Read expected output from file
+    std::ifstream expectedFile;
+    expectedFile.open(a_expectedFilePath);
+
+    std::istringstream actualStream(a_actualString.str());
+
+    EAGGR::TestUtilities::KmlFileMatcher matcher;
+    bool filesMatch = matcher.Compare(expectedFile, actualStream);
+    if (!filesMatch)
+    {
+        SCOPED_TRACE(matcher.GetLastErrorMessage());
+        ASSERT_TRUE(filesMatch);
+    }
+}
+
 /// Ensures tests cannot pass with the RECREATE_KML_FILES flag set.
 SYSTEM_TEST(KMLExporterISEA4T, CheckRecreateKmlFiles)
 {
   ASSERT_FALSE(RECREATE_KML_FILES);
+  struct stat buffer;   
+  const bool fileExists = (stat ("OpenEAGGR/EAGGRTestHarness", &buffer) == 0); 
+
+  // Helpful debugging statements
+#if defined(IS_ON_WINDOWS)
+  TCHAR cwdPath[MAX_PATH];
+  GetCurrentDirectory(MAX_PATH, cwdPath);
+#else
+  const char* cwdPath = "Unknown";
+#endif
+  ASSERT_TRUE(fileExists) << "Current working directory is set up wrong:\n\t"
+      "When checking out be sure to name the repo \"OpenEAGGR\", CWD should be the folder above \"OpenEAGGR\".\n"
+      "Current path is: \"" << cwdPath << "\"\n it should not include any open eaggr files.";
+
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, IcosahedronAllFaces)
@@ -86,54 +127,43 @@ SYSTEM_TEST(KMLExporterISEA4T, IcosahedronAllFaces)
   std::unique_ptr<Cell::ICell> face17 = indexer.CreateCell("17");
   std::unique_ptr<Cell::ICell> face18 = indexer.CreateCell("18");
   std::unique_ptr<Cell::ICell> face19 = indexer.CreateCell("19");
-
-  // Add the cells to the exporter
-  exporter.AddCell(*face0);
-  exporter.AddCell(*face1);
-  exporter.AddCell(*face2);
-  exporter.AddCell(*face3);
-  exporter.AddCell(*face4);
-  exporter.AddCell(*face5);
-  exporter.AddCell(*face6);
-  exporter.AddCell(*face7);
-  exporter.AddCell(*face8);
-  exporter.AddCell(*face9);
-  exporter.AddCell(*face10);
-  exporter.AddCell(*face11);
-  exporter.AddCell(*face12);
-  exporter.AddCell(*face13);
-  exporter.AddCell(*face14);
-  exporter.AddCell(*face15);
-  exporter.AddCell(*face16);
-  exporter.AddCell(*face17);
-  exporter.AddCell(*face18);
-  exporter.AddCell(*face19);
-
+  {
+      // Add the cells to the exporter
+      exporter.AddCell(*face0);
+      exporter.AddCell(*face1);
+      exporter.AddCell(*face2);
+      exporter.AddCell(*face3);
+      exporter.AddCell(*face4);
+      exporter.AddCell(*face5);
+      exporter.AddCell(*face6);
+      exporter.AddCell(*face7);
+      exporter.AddCell(*face8);
+      exporter.AddCell(*face9);
+      exporter.AddCell(*face10);
+      exporter.AddCell(*face11);
+      exporter.AddCell(*face12);
+      exporter.AddCell(*face13);
+      exporter.AddCell(*face14);
+      exporter.AddCell(*face15);
+      exporter.AddCell(*face16);
+      exporter.AddCell(*face17);
+      exporter.AddCell(*face18);
+      exporter.AddCell(*face19);
+  }
   // Export the KML
   std::ostringstream output;
   exporter.Export(output);
 
+  const std::string outputFilePath("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TIcosahedronAllFacesKmlExport.kml");
+
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TIcosahedronAllFacesKmlExport.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile(outputFilePath);
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TIcosahedronAllFacesKmlExport.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile(outputFilePath, output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, AllFacesResolution1)
@@ -162,27 +192,16 @@ SYSTEM_TEST(KMLExporterISEA4T, AllFacesResolution1)
   std::ostringstream output;
   exporter.Export(output);
 
+  const std::string outputFilePath("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TAllFacesResolution1.kml");
+
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TAllFacesResolution1.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile(outputFilePath);
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-// Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TAllFacesResolution1.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile(outputFilePath, output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, Face3Resolution2)
@@ -215,25 +234,12 @@ SYSTEM_TEST(KMLExporterISEA4T, Face3Resolution2)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution2.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution2.kml");
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution2.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution2.kml", output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, Face3Resolution3)
@@ -269,25 +275,12 @@ SYSTEM_TEST(KMLExporterISEA4T, Face3Resolution3)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution3.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution3.kml");
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution3.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TFace3Resolution3.kml", output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, Cities100m2Accuracy)
@@ -329,25 +322,12 @@ SYSTEM_TEST(KMLExporterISEA4T, Cities100m2Accuracy)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TCities100m2Accuracy.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TCities100m2Accuracy.kml");
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TCities100m2Accuracy.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TCities100m2Accuracy.kml", output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, CellGridTest)
@@ -398,25 +378,12 @@ SYSTEM_TEST(KMLExporterISEA4T, CellGridTest)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TGrid100m2Accuracy.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TGrid100m2Accuracy.kml");
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TGrid100m2Accuracy.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TGrid100m2Accuracy.kml", output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, ParentsTest)
@@ -454,25 +421,12 @@ SYSTEM_TEST(KMLExporterISEA4T, ParentsTest)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TParents.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TParents.kml");
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TParents.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TParents.kml", output);
 }
 
 SYSTEM_TEST(KMLExporterISEA4T, ChildrenTest)
@@ -510,23 +464,10 @@ SYSTEM_TEST(KMLExporterISEA4T, ChildrenTest)
 
   if (RECREATE_KML_FILES)
   {
-    std::ofstream ouputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TChildren.kml");
-    exporter.Export(ouputFile);
-    ouputFile.close();
+    std::ofstream outputFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TChildren.kml");
+    exporter.Export(outputFile);
+    outputFile.close();
   }
 
-  // Read expected output from file
-  std::ifstream expectedFile;
-  expectedFile.open("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TChildren.kml");
-
-  std::istringstream actualStream(output.str());
-
-  EAGGR::TestUtilities::KmlFileMatcher matcher;
-  bool filesMatch = matcher.Compare(expectedFile, actualStream);
-
-  if (!filesMatch)
-  {
-    SCOPED_TRACE(matcher.GetLastErrorMessage());
-    ASSERT_TRUE(filesMatch);
-  }
+  CheckKMLFile("OpenEAGGR/EAGGRTestHarness/TestData/ISEA4TChildren.kml", output);
 }
