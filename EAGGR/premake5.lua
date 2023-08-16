@@ -11,6 +11,6 @@ project "OpenEAGGR" -- testing project name
     removefiles { "**/3rdParty/**", "./3rdParty/**" } -- Don't compile with these (but they are included)
     warnings "Off"
     vpaths {
-        {["*/Header Files"] = {"OpenEAGGR/**.hpp", "OpenEAGGR/**.h"}},
-        {["*/Source Files"] = {"OpenEAGGR/**.cpp", "OpenEAGGR/**.inl", "OpenEAGGR/**.c"}},
+        {["*/Header Files"] = {"**.hpp", "**.h"}},
+        {["*/Source Files"] = {"**.cpp", "**.inl", "**.c"}},
     } -- creates vs .filter files
